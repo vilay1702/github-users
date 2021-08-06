@@ -19,11 +19,11 @@ const Card = () => {
             <img src={avatar_url} alt={name} />
             <div>
                 <h4>{name}</h4>
-                <p>@{twitter_username||'none'}</p>
+                <p>@{twitter_username||'twitter'}</p>
             </div>
             <a href={html_url}>follow</a>
         </header>
-        <p className="bio">{bio || 'NA'}</p>
+        <p className="bio">{bio || 'bio'}</p>
         <div className="links">
             <p><MdBusiness/>{company}</p>
             <p><MdLocationOn/>{location || 'earth'}</p>
@@ -33,6 +33,7 @@ const Card = () => {
 };
 const Wrapper = styled.article`
   background: var(--clr-white);
+  box-shadow: 0rem 0.3rem 0.5rem 0rem var(--clr-grey-5);
   padding: 1.5rem 2rem;
   border-top-right-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
