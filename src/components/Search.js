@@ -1,27 +1,33 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import { MdSearch } from 'react-icons/md';
-import { GithubContext } from '../context/context';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { MdSearch } from "react-icons/md";
+import { GithubContext } from "../context/context";
 const Search = () => {
-  const [user, setUser] = useState('')  
+  const [user, setUser] = useState("");
   const handleSubmit = (e) => {
-      e.preventDefault();
-      setUser('');
-      console.log(user);
-  }
+    e.preventDefault();
+    setUser("");
+    console.log(user);
+  };
   return (
-  <section className="section">
+    <section className="section">
       <Wrapper className="section-center">
-          <form onSubmit={(e)=>handleSubmit(e)}>
-              <div className="form-control">
-                  <MdSearch/>
-                  <input type="text" placeholder="Enter user..." value={user} onChange={(e)=>setUser(e.target.value)} required/>
-                  <button type="submit">Enter</button>
-              </div>
-          </form>
-          <h3>Requests: 60/60</h3>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="form-control">
+            <MdSearch />
+            <input
+              type="text"
+              placeholder="Enter user..."
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+              required
+            />
+            <button type="submit">Enter</button>
+          </div>
+        </form>
+        <h3>Requests: 60/60</h3>
       </Wrapper>
-  </section>
+    </section>
   );
 };
 
@@ -46,13 +52,14 @@ const Wrapper = styled.div`
     padding: 0.5rem;
     input {
       border-color: transparent;
-      outline-color: var(--clr-grey-10);
+      outline: none;
       letter-spacing: var(--spacing);
-      color: var(--clr-grey-3);
+      color: var(--clr-grey-8);
       padding: 0.25rem 0.5rem;
+      background-color: var(--clr-white);
     }
     input::placeholder {
-      color: var(--clr-grey-3);
+      color: var(--clr-grey-8);
       text-transform: capitalize;
       letter-spacing: var(--spacing);
     }
@@ -89,7 +96,7 @@ const Wrapper = styled.div`
   }
   h3 {
     margin-bottom: 0;
-    color: var(--clr-grey-5);
+    color: var(--clr-grey-7);
     font-weight: 400;
   }
 `;

@@ -17,29 +17,28 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
-
-
-const ChartComponent = ({data}) => {
+const ChartComponent = ({ data }) => {
   const chartConfigs = {
-  type: "column3d", // The chart type
-  width: "100%", // Width of the chart
-  height: "400", // Height of the chart
-  dataFormat: "json", // Data type
-  dataSource: {
-    // Chart Configuration
-    chart: {
-      //Set the chart caption
-      caption:"Most Popular",
-      xAxisName: 'Stars',
-      yAxisName: 'Repos',
-      xAxisNameFontSize: '16px',
-      yAxisNameFontSize: '16px',
+    type: "column3d", // The chart type
+    width: "100%", // Width of the chart
+    height: "400", // Height of the chart
+    dataFormat: "json", // Data type
+    dataSource: {
+      // Chart Configuration
+      chart: {
+        //Set the chart caption
+        theme: "candy",
+        caption: "Most Popular",
+        xAxisName: "Stars",
+        yAxisName: "Repos",
+        xAxisNameFontSize: "16px",
+        yAxisNameFontSize: "16px",
+      },
+      // Chart Data
+      data,
     },
-    // Chart Data
-    data
-  }
+  };
+  return <ReactFC {...chartConfigs} />;
 };
-  return (<ReactFC {...chartConfigs} />);
-}
 
 export default ChartComponent;
