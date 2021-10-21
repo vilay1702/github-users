@@ -4,14 +4,21 @@ import { MdSearch } from "react-icons/md";
 import { GithubContext } from "../context/context";
 const Search = () => {
   const [user, setUser] = useState("");
+  const { requests, error, searchGithubUsers } =
+    React.useContext(GithubContext);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (user) {
+      searchGithubUsers(user);
+    }
     setUser("");
-    console.log(user);
   };
   return (
     <section className="section">
       <Wrapper className="section-center">
+        {error.show && (
+          <ErrorWrapper className="requestsOver">{error.msg}</ErrorWrapper>
+        )}
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="form-control">
             <MdSearch />
@@ -22,10 +29,11 @@ const Search = () => {
               onChange={(e) => setUser(e.target.value)}
               required
             />
-            <button type="submit">Enter</button>
+            {requests > 0 && <button type="submit">Enter</button>}
           </div>
         </form>
-        <h3>Requests: 60/60</h3>
+
+        <h3>Requests: {requests}/60</h3>
       </Wrapper>
     </section>
   );
@@ -41,6 +49,9 @@ const Wrapper = styled.div`
     h3 {
       padding: 0 0.5rem;
     }
+  }
+  .requestsOver {
+    color: var(--clr-red-dark);
   }
   .form-control {
     background: var(--clr-white);
