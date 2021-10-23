@@ -7,7 +7,7 @@ const Dashboard = () => {
   if (isLoading) {
     return (
       <main>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
         <Search />
         <Loading />
       </main>
