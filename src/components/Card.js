@@ -122,5 +122,8 @@ const Wrapper = styled.article`
       }
     }
   }
+  @media (max-width: 400px) {
+    width: 90vw;
+  }
 `;
 export default Card;

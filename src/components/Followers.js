@@ -75,5 +75,8 @@ const Wrapper = styled.article`
       color: var(--clr-grey-5);
     }
   }
+  @media (max-width: 400px) {
+    width: 90vw;
+  }
 `;
 export default Followers;
