@@ -1,5 +1,5 @@
-const arr = [
-  ({
+export default [
+  {
     login: "romanofficial",
     id: 47697490,
     node_id: "MDQ6VXNlcjQ3Njk3NDkw",
@@ -209,7 +209,5 @@ const arr = [
       "https://api.github.com/users/yashmoyal/received_events",
     type: "User",
     site_admin: false,
-  }),
+  },
 ];
-
-export default arr;
