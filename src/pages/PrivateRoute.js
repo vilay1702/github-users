@@ -5,7 +5,7 @@ import Login from "./Login";
 
 const PrivateRoute = ({ children, ...rest }) => {
   const { isAuthenticated, user } = useAuth0();
-  const isUser = false;
+  const isUser = isAuthenticated && user;
   return (
     <Route
       {...rest}
