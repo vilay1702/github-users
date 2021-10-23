@@ -18,16 +18,38 @@ const GithubProvider = ({ children }) => {
   const [error, setError] = useState({ show: false, msg: "" });
 
   const searchGithubUsers = async (user) => {
+    setIsLoading(true);
     toggleError();
     const response = await axios(`${rootUrl}/users/${user}`).catch((err) => {
       console.log(err);
     });
     if (response) {
-      console.log(response);
       setGithubUser(response.data);
+      const { repos_url, followers_url } = response.data;
+      // axios(`${repos_url}?per_page=100`).then((response) =>
+      //   setRepos(response.data)
+      // );
+      // axios(`${followers_url}?per_page=100`).then((response) => {
+      //   setFollowers(response.data);
+      // });
+      await Promise.allSettled([
+        axios(`${repos_url}?per_page=100`),
+        axios(`${followers_url}?per_page=100`),
+      ]).then((results) => {
+        const [repos, followers] = results;
+        const status = "fulfilled";
+        if (repos.status === status) {
+          setRepos(repos.value.data);
+        }
+        if (followers.status === status) {
+          setFollowers(followers.value.data);
+        }
+      });
     } else {
       toggleError(true, "Username not found!!");
     }
+    checkRequests();
+    setIsLoading(false);
   };
 
   const checkRequests = () => {
@@ -60,6 +82,7 @@ const GithubProvider = ({ children }) => {
         requests,
         error,
         searchGithubUsers,
+        isLoading,
       }}
     >
       {children}
