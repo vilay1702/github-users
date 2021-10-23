@@ -1,5 +1,5 @@
 import React from "react";
-import { Info, Repos, User, Search, Navbar, Loading } from "../components";
+import { Info, Repos, User, Search, Loading } from "../components";
 import { GithubContext } from "../context/context";
 
 const Dashboard = () => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
   } else {
     return (
       <main>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
         <Search />
         <Info />
         <User />

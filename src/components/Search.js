@@ -24,7 +24,7 @@ const Search = () => {
             <MdSearch />
             <input
               type="text"
-              placeholder="Enter user..."
+              placeholder="Enter github username (vilay1702)"
               value={user}
               onChange={(e) => setUser(e.target.value)}
               required
@@ -41,6 +41,7 @@ const Search = () => {
 
 const Wrapper = styled.div`
   position: relative;
+  margin-top: 5vh;
   display: grid;
   gap: 1rem 1.75rem;
   @media (min-width: 768px) {
@@ -71,7 +72,7 @@ const Wrapper = styled.div`
     }
     input::placeholder {
       color: var(--clr-grey-8);
-      text-transform: capitalize;
+      // text-transform: capitalize;
       letter-spacing: var(--spacing);
     }
     button {
